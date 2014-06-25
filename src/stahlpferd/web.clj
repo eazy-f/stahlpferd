@@ -18,3 +18,6 @@
   (let [export-dir "web"]
     (stasis/empty-directory! export-dir)
     (stasis/export-pages (get-pages) export-dir)))
+
+(defn handle-pages []
+  (stasis/serve-pages get-pages))
