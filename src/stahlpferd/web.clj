@@ -7,7 +7,7 @@
     [:head
      (hp/include-js "main.js")]
     [:body
-      [:p "Ride das stahl pferd"]]))
+      [:div {:id "text1"}]]))
 
 (defn get-pages []
   (merge
