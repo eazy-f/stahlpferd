@@ -7,7 +7,8 @@
     [:head
      (hp/include-js "main.js")]
     [:body
-      [:div {:id "text1"}]]))
+      [:div {:id "text1"}]
+      [:div {:id "text2"}]]))
 
 (defn get-pages []
   (merge

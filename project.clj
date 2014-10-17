@@ -4,9 +4,11 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.8"]
                  [hiccup "1.0.5"]
-                 [stasis "2.1.1"]]
+                 [stasis "2.1.1"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
   :plugins [[lein-ring "0.8.11"]
-            [lein-cljsbuild "1.0.3"]]
+            [lein-cljsbuild "1.0.3"]
+            [cider/cider-nrepl "0.7.0"]]
   :ring {:handler stahlpferd.handler/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
