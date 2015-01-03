@@ -1,11 +1,15 @@
 (ns main
-  (:require 
+  (:require
 
     [goog.dom :as gdom]
     [goog.events :as gevents]
-    [cljs.core.async :as a])
+    [cljs.core.async :as a]
+    [om.core :as om :include-macros true]
+    [om.dom :as dom :include-macros true])
   (:require-macros
     [cljs.core.async.macros :refer [go-loop go]]))
+
+(def om-number (atom 12))
 
 (defn hello []
   (let
@@ -29,12 +33,20 @@
         (gdom/append p num)
         (recur)))
     (go-loop []
-      (a/>! nums (rand-int 100))
-      (a/<! (a/timeout 100))
-      (recur))))
+      (let [rand-num (rand-int 100)]
+        (a/>! nums rand-num)
+        (a/<! (a/timeout 100))
+        (swap! om-number (fn [_] rand-num))
+        (recur)))))
 
-(let
-  [doc (gdom/getWindow)]
-  (gevents/listen doc goog.events.EventType.LOAD numbers))
+(om/root
+ (fn [app owner]
+   (om/component
+    (dom/h2 nil (str app))))
+ om-number
+ {:target (gdom/getElement "text3")})
+
+(numbers)
+
 
 ;(.log js/console (gdom/getDocument))

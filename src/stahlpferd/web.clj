@@ -4,11 +4,12 @@
 
 (defn index-page []
   (hp/html5
-    [:head
-     (hp/include-js "main.js")]
     [:body
       [:div {:id "text1"}]
-      [:div {:id "text2"}]]))
+      [:div {:id "text2"}]
+      [:div {:id "text3"}]
+      (hp/include-js "http://fb.me/react-0.12.2.js")
+      (hp/include-js "main.js")]))
 
 (defn get-pages []
   (merge
