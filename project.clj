@@ -17,10 +17,11 @@
                         [ring-mock "0.1.5"]]}}
   :aliases {"build-site" ["run" "-m" "stahlpferd.web/export"]}
   :cljsbuild {
-    :builds [{
-      :source-paths ["src-cljs"]
+    :builds [
+             {
+      :source-paths ["src-cljs/cljakstab"]
       :compiler {
-        :output-to "resources/public/main.js"
+        :output-to "resources/public/cljakstab.js"
         ;:optimizations :whitespace
         :optimizations :advanced
         :pretty-print true}}]})

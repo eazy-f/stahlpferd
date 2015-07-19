@@ -34,9 +34,9 @@
         (recur)))
     (go-loop []
       (let [rand-num (rand-int 100)]
+        (reset! om-number rand-num)
         (a/>! nums rand-num)
         (a/<! (a/timeout 100))
-        (swap! om-number (fn [_] rand-num))
         (recur)))))
 
 (om/root
@@ -46,7 +46,8 @@
  om-number
  {:target (gdom/getElement "text3")})
 
-(numbers)
+(.log js/console "hello")
 
+;(numbers)
 
 ;(.log js/console (gdom/getDocument))
